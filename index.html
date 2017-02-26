@@ -39,17 +39,17 @@
         <ul>
           <li class="fragment">Bitcoin Script editor. (Angular &amp; Ionic)</li>
           <br>
-          <li class="fragment">Stateless, purely-functional bitcoin script evaluation engine. (Typescript)</li>
+          <li class="fragment">Stateless, purely-functional, bitcoin script evaluation engine. (Typescript)</li>
         </ul>
       </section>
 
 
 			<section data-transition="zoom-in slide-out">
         <h3>Bitcoin Blockchain</h3>
-        <p>worldwide perfectly-consistent database of identities</p>
+        <p>worldwide, perfectly-consistent database of identities</p>
         <br>
         <h3>Bitcoin Script</h3>
-        <p>universally, bug-for-bug compatible, scripting language</p>
+        <p>universally-bug-for-bug-compatible scripting language</p>
 			</section>
 
 			<!-- <section>
@@ -379,7 +379,7 @@
         <pre><code class="hljs">
 import { execute, OpCode } from 'bitcoin-script'
 
-const a = execute({
+const step = execute({
   blockHeight: 0, blockTime: 0, nLockTime: 0,
   nSequence: 0, stack: [], altStack: [], programCounter: 0,
   serializedScript: new Uint8Array([
@@ -388,7 +388,7 @@ const a = execute({
     OpCode.OP_ADD
   ])})
 
-a.next(); a.next(); a.next();
+step.next(); step.next(); step.next();
         </code></pre>
 			</section>
 
