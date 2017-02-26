@@ -39,7 +39,7 @@
         <ul>
           <li class="fragment">Bitcoin Script editor. (Angular &amp; Ionic)</li>
           <br>
-          <li class="fragment">Stateless bitcoin script evaluation engine. (Typescript)</li>
+          <li class="fragment">Stateless, purely-functional bitcoin script evaluation engine. (Typescript)</li>
         </ul>
       </section>
 
@@ -301,7 +301,9 @@
 			</section> -->
 
 			<section data-transition="zoom-in slide-out">
-				<p>24 hours</p>
+				<h1>24 hours</h1><br>
+        <h3>~5,000 lines</h3>
+        <h3>No 3rd party/API dependencies</h3>
 			</section>
 
 			<!-- <section>
@@ -362,7 +364,7 @@
 				</aside>
 			</section> -->
 
-			<section>
+			<!-- <section>
 				<h2>Hackathon Project</h2>
 				<br>
 				<ul>
@@ -370,20 +372,20 @@
 					<br>
 					<li class="fragment">Bitcoin Script editor. (Angular &amp; Ionic)</li>
 				</ul>
-			</section>
+			</section> -->
 
 			<section>
-				<h2>Stateless Script Evaluation</h2>
+				<h3>Stateless Script Evaluation Engine</h3>
         <pre><code class="hljs">
 import { execute, OpCode } from 'bitcoin-script'
 
-const a = execute(
-  { blockHeight: 0, blockTime: 0, nLockTime: 0,
+const a = execute({
+  blockHeight: 0, blockTime: 0, nLockTime: 0,
   nSequence: 0, stack: [], altStack: [], programCounter: 0,
   serializedScript: new Uint8Array([
-  OpCode.OP_2,
-  OpCode.OP_3,
-  OpCode.OP_ADD
+    OpCode.OP_2,
+    OpCode.OP_3,
+    OpCode.OP_ADD
   ])})
 
 a.next(); a.next(); a.next();
