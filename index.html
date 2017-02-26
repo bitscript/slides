@@ -1,0 +1,478 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title>BitAuth2017</title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/bitjson.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<h3>BitScript</h3>
+				<p>-</p>
+				<p>Distributed: Markets Blockchain Hacakthon</p>
+				<p><small><a href="https://bitscript-slides.herokuapp.com/">bitscript-slides.herokuapp.com</a></small></p>
+			</section>
+
+			<section data-transition="zoom-in slide-out">
+				<h2>Static Authentication</h2>
+			</section>
+
+			<section>
+				<h2>Static Authentication</h2>
+				<ul>
+					<li>Service provides many authentication options</li>
+					<li>Service collects necessary information from the user (password, phone number, secret questions, email address, etc.)</li>
+					<li>To login, service issues challenge(s)</li>
+					<li>Service verifies user response</li>
+				</ul>
+			</section>
+
+			<section data-transition="zoom-in slide-out">
+				<p>The Blockchain gives us an alternative.</p>
+			</section>
+
+			<section>
+				<h2>Scriptable Authentication</h2>
+				<ul>
+					<li>User chooses requirements using Bitcoin Script</li>
+					<li>Service collects users blockchain identity</li>
+					<li>To login, user provides unlocking script</li>
+					<li>Service executes the scripts</li>
+				</ul>
+				<aside class="notes">
+					This is something that was nearly impossible to coordinate around the world, until a consensus could be made around a authentication scripting language.
+				</aside>
+			</section>
+<!--
+			<section>
+				<h4>Why Scriptable Authentication?</h4>
+				<ul>
+					<li>Aligning of security incentives</li>
+					<li>Improved user experience by moving authentication to the (more competitive) consumer sphere</li>
+					<li>Simplify development requirements for services</li>
+					<li>Fewer systems, fewer attack surfaces</li>
+				</ul>
+			</section> -->
+
+			<!-- <section>
+				<h4>User-friendly, secure, software signatures</h4>
+				<br>
+				<div class="fragment">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" width="70%" viewBox="0 0 136.5 55.3" style="enable-background:new 0 0 136.5 55.3;"
+									xml:space="preserve">
+						<style type="text/css">
+							.fig7a {
+								fill: #FFFFFF;
+							}
+
+							.fig7b {
+								font-weight: 300;
+							}
+
+							.fig7c {
+								font-size: 7.1927px;
+							}
+
+							.fig7d {
+								fill: #FFFFFF;
+								stroke: #000000;
+								stroke-miterlimit: 10;
+							}
+
+							.st4 {
+								fill: #010101;
+							}
+						</style>
+						<defs>
+						</defs>
+						<g>
+							<text transform="matrix(1 0 0 1 102.0572 53.7813)" class="fig7a fig7b fig7c">bitcoin.zip</text>
+							<g>
+								<polygon class="fig7a" points="127.4,0.5 102.2,0.5 102.2,39.7 136,39.7 136,9.1 127.4,9.1 		" />
+								<path class="fig7d" d="M127.4,0.5" />
+								<polygon class="fig7a" points="136,9.1 127.4,9.1 127.4,0.5 		" />
+								<path d="M136.5,8.9L127.6,0h-25.9v40.2h34.8V8.9z M134.7,8.6h-6.9V1.7L134.7,8.6z M135.5,39.2h-32.8V1h24.2v8.6h8.6V39.2z" />
+								<g>
+									<path class="st4" d="M119.1,13.4c-3.7,0-6.7,3-6.7,6.7s3,6.7,6.7,6.7s6.7-3,6.7-6.7S122.8,13.4,119.1,13.4z M122.5,17.8l-4.2,5.3
+				            				c0,0-0.1,0.1-0.2,0.1c-0.1,0-0.1,0-0.2-0.1c0,0-2.4-2.3-2.4-2.3l0,0c0,0,0-0.1,0-0.1s0-0.1,0-0.1c0,0,0,0,0,0
+				            				c0.2-0.2,0.7-0.7,0.7-0.8c0,0,0.1-0.1,0.1-0.1c0.1,0,0.1,0.1,0.2,0.1c0,0,1.3,1.3,1.3,1.3l3.3-4.3c0,0,0.1,0,0.1,0
+				            				c0,0,0.1,0,0.1,0l0.9,0.7C122.5,17.7,122.5,17.7,122.5,17.8C122.5,17.8,122.5,17.8,122.5,17.8z" />
+								</g>
+							</g>
+							<polygon class="fig7a" points="84.8,20.5 77.6,15.1 77.6,17.9 67.8,17.9 67.8,23 77.6,23 77.6,25.8 	" />
+							<text transform="matrix(1 0 0 1 -3.814697e-05 53.7813)" class="fig7a fig7b fig7c">bitcoin.zip.bitauth</text>
+							<g>
+								<polygon class="fig7a" points="37.7,0.5 12.5,0.5 12.5,39.7 46.3,39.7 46.3,9.1 37.7,9.1 		" />
+								<path class="fig7d" d="M37.7,0.5" />
+								<polygon class="fig7a" points="46.3,9.1 37.7,9.1 37.7,0.5 		" />
+								<path d="M46.8,8.9L37.9,0H12v40.2h34.8V8.9z M45.1,8.6h-6.9V1.7L45.1,8.6z M45.8,39.2H13V1h24.2v8.6h8.6V39.2z" />
+							</g>
+							<g>
+								<path d="M25.2,15.3c0.2-0.6,0.5-1.1,0.9-1.5c0.4-0.4,0.9-0.7,1.4-0.8c0.6-0.2,1.2-0.3,2-0.3c1.5,0,2.6,0.4,3.3,1.1
+				            			c0.7,0.7,1,1.7,1,2.9c0,0.6-0.1,1.1-0.2,1.6c-0.1,0.5-0.4,0.9-0.7,1.3l-1.5,1.7c-0.2,0.2-0.3,0.5-0.4,0.8
+				            			c-0.1,0.3-0.1,0.7-0.1,1.2h-3.3v-0.6c0-0.8,0.1-1.4,0.2-1.9c0.1-0.5,0.4-0.9,0.7-1.3l1.2-1.4c0.3-0.3,0.4-0.6,0.5-0.9
+				            			c0.1-0.3,0.1-0.6,0.1-0.8c0-0.4-0.1-0.7-0.2-1c-0.1-0.2-0.4-0.4-0.7-0.4c-0.2,0-0.3,0-0.4,0.1c-0.1,0.1-0.2,0.2-0.3,0.4
+				            			c-0.1,0.2-0.1,0.4-0.2,0.8c0,0.3-0.1,0.8-0.1,1.3h-3.4C24.9,16.7,25,15.9,25.2,15.3z M31,24.3v3.2h-3.4v-3.2H31z" />
+							</g>
+						</g>
+						</svg>
+				</div>
+				<aside class="notes">
+				</aside>
+			</section> -->
+
+			<!-- <section>
+				<h4>Phishing-proof login</h4>
+				<div class="fragment">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" viewBox="0 0 349.7 202.5" style="enable-background:new 0 0 349.7 202.5;" xml:space="preserve">
+	          <style type="text/css">
+	          	.dia1a{fill:#6B6B6B;}
+	          	.dia1b{fill:#6668B0;}
+	          	.dia1c{fill:#FFFFFF;}
+	          	.dia1d{font-weight:700;}
+	          	.dia1e{font-size:13.5244px;}
+	          	.dia1f{font-size:13.2214px;}
+	          	.dia1g{stroke:#FFFFFF;stroke-miterlimit:10;}
+	          	.dia1h{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+	          	.dia1i{font-size:9px;}
+	          </style>
+	          <defs>
+	          </defs>
+	          <g>
+	          	<g>
+	          		<path class="dia1a" d="M141.5,111.2c0-1.7-1.2-3-2.8-3H12.4c-1.6,0-3,1.4-3,3v77.2h132.1V111.2z M132.1,178.9H18.9v-61.3h113.2
+	          			V178.9z"/>
+	          		<path class="dia1a" d="M0,194.4c20.7,5.9,34.1,8,75.5,8s54.8-2.2,75.5-8v-1.4H0V194.4z"/>
+	          	</g>
+	          	<g>
+	          		<path class="dia1a" d="M340.3,111.2c0-1.7-1.2-3-2.8-3H211.2c-1.6,0-3,1.4-3,3v77.2h132.1V111.2z M330.8,178.9H217.6v-61.3h113.2
+	          			V178.9z"/>
+	          		<path class="dia1a" d="M198.7,194.4c20.7,5.9,34.1,8,75.5,8s54.8-2.2,75.5-8v-1.4h-151V194.4z"/>
+	          	</g>
+	          	<path class="dia1b" d="M107.3,163.5H42.1c-3.4,0-6.2-2.8-6.2-6.2v-18c0-3.4,2.8-6.2,6.2-6.2h65.3c3.4,0,6.2,2.8,6.2,6.2v18
+	          		C113.6,160.7,110.8,163.5,107.3,163.5z"/>
+	          	<text transform="matrix(1 0 0 1 56.7967 152.5737)" class="dia1c dia1d dia1e">Login</text>
+	          	<polygon class="dia1b" points="187.3,148.2 176.4,140.1 176.4,144.4 161.4,144.4 161.4,152.1 176.4,152.1 176.4,156.4 	"/>
+	          	<text transform="matrix(1 0 0 1 242.6911 153.2009)" class="dia1c dia1d dia1e">Welcome!</text>
+	          	<polygon class="dia1g" points="26.9,161.4 44.8,154.5 37.6,171.7 33.2,167.4 29.5,170.5 27.5,167.9 30.8,165.1 	"/>
+	          	<rect x="88" y="0.5" class="dia1h" width="176.3" height="74"/>
+	          	<g>
+	          		<text transform="matrix(1 0 0 1 107.2749 22.8388)" class="dia1d dia1i">check signature(login challenge)</text>
+	          		<text transform="matrix(1 0 0 1 120.7804 40.4034)" class="dia1d dia1i">derive(service's authbase)</text>
+	          		<text transform="matrix(1 0 0 1 130.923 57.968)" class="dia1d dia1i">sign(login challenge)</text>
+	          	</g>
+	          	<polygon class="dia1h" points="111,83.8 106.3,90.2 108.8,90.2 108.8,98.8 113.2,98.8 113.2,90.2 115.7,90.2 	"/>
+	          	<polygon class="dia1h" points="235.1,100.6 239.8,94.3 237.3,94.3 237.3,85.6 232.9,85.6 232.9,94.3 230.4,94.3 	"/>
+	          </g>
+	          </svg>
+				</div>
+			</section>
+
+			<section>
+				<h4>Phishing-proof, multifactor login – no resets</h4>
+				<div class="fragment">
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" viewBox="0 0 412.1 177.8" style="enable-background:new 0 0 412.1 177.8;" xml:space="preserve">
+          <style type="text/css">
+          	.dia2a{fill:#6B6B6B;}
+          	.dia2b{fill:#6668B0;}
+          	.dia2c{fill:#FFFFFF;}
+          	.dia2d{font-weight:700;}
+          	.dia2e{font-size:7.6812px;}
+          	.dia2f{font-size:5.8145px;}
+          	.dia2g{stroke:#FFFFFF;stroke-miterlimit:10;}
+          	.dia2h{font-size:4.7464px;}
+          	.dia2i{fill:#FFFFFF;stroke:#000000;stroke-miterlimit:10;}
+          	.dia2j{font-size:5.9844px;}
+          	.dia2k{fill:#41B649;}
+          </style>
+          <defs>
+          </defs>
+          <g>
+          	<g>
+          		<path class="dia2a" d="M80.4,98.9c0-0.9-0.7-1.7-1.6-1.7H7.1c-0.9,0-1.7,0.8-1.7,1.7v43.8h75V98.9z M75,137.3H10.7v-34.8H75V137.3z"
+          			/>
+          		<path class="dia2a" d="M0,146.2c11.8,3.3,19.4,4.6,42.9,4.6s31.1-1.2,42.9-4.6v-0.8H0V146.2z"/>
+          	</g>
+          	<g>
+          		<path class="dia2a" d="M406.7,98.9c0-0.9-0.7-1.7-1.6-1.7h-71.7c-0.9,0-1.7,0.8-1.7,1.7v43.8h75V98.9z M401.4,137.3h-64.3v-34.8
+          			h64.3V137.3z"/>
+          		<path class="dia2a" d="M326.3,146.2c11.8,3.3,19.4,4.6,42.9,4.6s31.1-1.2,42.9-4.6v-0.8h-85.7V146.2z"/>
+          	</g>
+          	<path class="dia2b" d="M58.3,128.6H26.6c-3.4,0-6.2-2.8-6.2-6.2v-4.9c0-3.4,2.8-6.2,6.2-6.2h31.7c3.4,0,6.2,2.8,6.2,6.2v4.9
+          		C64.5,125.8,61.7,128.6,58.3,128.6z"/>
+          	<text transform="matrix(1 0 0 1 33.2585 122.3771)" class="dia2c dia2d dia2e">Login</text>
+          	<polygon class="dia2b" points="223,119.9 216.7,115.3 216.7,117.7 208.2,117.7 208.2,122.1 216.7,122.1 216.7,124.5 	"/>
+          	<polygon class="dia2b" points="318.7,119.9 312.5,115.3 312.5,117.7 304,117.7 304,122.1 312.5,122.1 312.5,124.5 	"/>
+          	<polygon class="dia2b" points="104.9,119.9 98.6,115.3 98.6,117.7 90.1,117.7 90.1,122.1 98.6,122.1 98.6,124.5 	"/>
+          	<text transform="matrix(1 0 0 1 346.8204 122.1909)" class="dia2c dia2d dia2f">Welcome,  bitjson!</text>
+          	<polygon class="dia2g" points="15.3,127.4 25.4,123.5 21.4,133.2 18.8,130.8 16.8,132.5 15.6,131.1 17.5,129.5 	"/>
+          	<g>
+          		<path class="dia2a" d="M189.6,98.9c0-0.9-0.7-1.7-1.6-1.7h-71.7c-0.9,0-1.7,0.8-1.7,1.7v43.8h75V98.9z M184.3,137.3H120v-34.8h64.3
+          			V137.3z"/>
+          		<path class="dia2a" d="M109.2,146.2c11.8,3.3,19.4,4.6,42.9,4.6s31.1-1.2,42.9-4.6v-0.8h-85.7V146.2z"/>
+          	</g>
+          	<path class="dia2b" d="M174.9,120.1h-46.4c-2.2,0-4-1.8-4-4v-3.3c0-2.2,1.8-4,4-4h46.4c2.2,0,4,1.8,4,4v3.3
+          		C178.9,118.3,177.1,120.1,174.9,120.1z"/>
+          	<text transform="matrix(1 0 0 1 145.0401 115.9057)" class="dia2c dia2d dia2h">bitjson</text>
+          	<path class="dia2b" d="M174.9,132.7h-46.4c-2.2,0-4-1.8-4-4v-3.3c0-2.2,1.8-4,4-4h46.4c2.2,0,4,1.8,4,4v3.3
+          		C178.9,130.9,177.1,132.7,174.9,132.7z"/>
+          	<text transform="matrix(1 0 0 1 133.2276 128.5532)" class="dia2c dia2d dia2h">my secret identity</text>
+          	<polygon class="dia2g" points="121.3,120.4 131.4,116.5 127.4,126.2 124.8,123.8 122.8,125.5 121.6,124.1 123.5,122.5 	"/>
+          	<rect x="176.3" y="0.5" class="dia2i" width="150" height="48.4"/>
+          	<g>
+          		<text transform="matrix(1 0 0 1 191.3995 15.1968)" class="dia2d dia2j">check signatures(recognized browser, service)</text>
+          		<text transform="matrix(1 0 0 1 205.3985 26.8755)" class="dia2d dia2j">derive(service's authbase, “bitjson”)</text>
+          		<text transform="matrix(1 0 0 1 225.6241 38.5542)" class="dia2d dia2j">sign(login challenge)</text>
+          	</g>
+          	<polygon class="dia2i" points="190.4,63.4 179.1,68.3 182.4,70.3 175.6,82 181.6,85.5 188.4,73.8 191.8,75.7 	"/>
+          	<g>
+          		<path class="dia2a" d="M248.9,62h-14.7c-1.3,0-2.4,1.1-2.4,2.4v34.2c0,1.3,1.1,2.4,2.4,2.4h14.7c1.3,0,2.4-1.1,2.4-2.4V64.4
+          			C251.3,63.1,250.3,62,248.9,62z M239.9,65.7c0-0.2,0.2-0.4,0.4-0.4h2.5c0.2,0,0.4,0.2,0.4,0.4v0c0,0.2-0.2,0.4-0.4,0.4h-2.5
+          			C240.1,66.1,239.9,65.9,239.9,65.7L239.9,65.7L239.9,65.7z M238.7,65.3c0.2,0,0.4,0.2,0.4,0.4c0,0.2-0.2,0.4-0.4,0.4
+          			c-0.2,0-0.4-0.2-0.4-0.4C238.3,65.5,238.5,65.3,238.7,65.3z M241.6,99.5c-0.9,0-1.6-0.7-1.6-1.6s0.7-1.6,1.6-1.6
+          			c0.9,0,1.6,0.7,1.6,1.6S242.5,99.5,241.6,99.5z M249.7,94.6h-16.3V68.5h16.3V94.6z"/>
+          	</g>
+          	<g>
+          		<path class="dia2k" d="M241.6,77.5c-2.2,0-4,1.8-4,4c0,2.2,1.8,4,4,4c2.2,0,4-1.8,4-4C245.6,79.3,243.8,77.5,241.6,77.5z
+          			 M243.6,80.2l-2.5,3.2c0,0-0.1,0.1-0.1,0.1c0,0-0.1,0-0.1-0.1s-1.4-1.4-1.4-1.4l0,0c0,0,0,0,0-0.1s0,0,0-0.1c0,0,0,0,0,0
+          			c0.1-0.1,0.4-0.4,0.4-0.5c0,0,0-0.1,0.1-0.1c0,0,0.1,0,0.1,0.1c0,0,0.8,0.8,0.8,0.8l2-2.6c0,0,0,0,0.1,0c0,0,0,0,0.1,0l0.6,0.4
+          			C243.6,80.1,243.7,80.1,243.6,80.2C243.7,80.2,243.6,80.2,243.6,80.2z"/>
+          	</g>
+          	<g>
+          		<path class="dia2a" d="M281.9,100.4h-14.7c-1.3,0-2.4,1.1-2.4,2.4V137c0,1.3,1.1,2.4,2.4,2.4h14.7c1.3,0,2.4-1.1,2.4-2.4v-34.2
+          			C284.3,101.5,283.3,100.4,281.9,100.4z M272.9,104c0-0.2,0.2-0.4,0.4-0.4h2.5c0.2,0,0.4,0.2,0.4,0.4v0c0,0.2-0.2,0.4-0.4,0.4h-2.5
+          			C273.1,104.4,272.9,104.3,272.9,104L272.9,104L272.9,104z M271.7,103.6c0.2,0,0.4,0.2,0.4,0.4c0,0.2-0.2,0.4-0.4,0.4
+          			c-0.2,0-0.4-0.2-0.4-0.4C271.3,103.8,271.5,103.6,271.7,103.6z M274.6,137.9c-0.9,0-1.6-0.7-1.6-1.6c0-0.9,0.7-1.6,1.6-1.6
+          			s1.6,0.7,1.6,1.6C276.2,137.1,275.5,137.9,274.6,137.9z M282.7,133h-16.3v-26.1h16.3V133z"/>
+          	</g>
+          	<g>
+          		<path class="dia2k" d="M274.6,115.9c-2.2,0-4,1.8-4,4c0,2.2,1.8,4,4,4s4-1.8,4-4C278.6,117.7,276.8,115.9,274.6,115.9z
+          			 M276.6,118.6l-2.5,3.2c0,0-0.1,0.1-0.1,0.1c0,0-0.1,0-0.1-0.1c0,0-1.4-1.4-1.4-1.4l0,0c0,0,0,0,0-0.1s0,0,0-0.1c0,0,0,0,0,0
+          			c0.1-0.1,0.4-0.4,0.4-0.5c0,0,0-0.1,0.1-0.1c0,0,0.1,0,0.1,0.1c0,0,0.8,0.8,0.8,0.8l2-2.6c0,0,0,0,0.1,0s0,0,0.1,0l0.6,0.4
+          			C276.6,118.5,276.7,118.5,276.6,118.6C276.7,118.5,276.6,118.5,276.6,118.6z"/>
+          	</g>
+          	<g>
+          		<path class="dia2a" d="M248.9,138.7h-14.7c-1.3,0-2.4,1.1-2.4,2.4v34.2c0,1.3,1.1,2.4,2.4,2.4h14.7c1.3,0,2.4-1.1,2.4-2.4v-34.2
+          			C251.3,139.8,250.3,138.7,248.9,138.7z M239.9,142.4c0-0.2,0.2-0.4,0.4-0.4h2.5c0.2,0,0.4,0.2,0.4,0.4v0c0,0.2-0.2,0.4-0.4,0.4
+          			h-2.5C240.1,142.8,239.9,142.6,239.9,142.4L239.9,142.4L239.9,142.4z M238.7,142c0.2,0,0.4,0.2,0.4,0.4s-0.2,0.4-0.4,0.4
+          			c-0.2,0-0.4-0.2-0.4-0.4S238.5,142,238.7,142z M241.6,176.2c-0.9,0-1.6-0.7-1.6-1.6c0-0.9,0.7-1.6,1.6-1.6c0.9,0,1.6,0.7,1.6,1.6
+          			C243.2,175.5,242.5,176.2,241.6,176.2z M249.7,171.3h-16.3v-26.1h16.3V171.3z"/>
+          	</g>
+          	<g>
+          		<path class="dia2k" d="M241.6,154.2c-2.2,0-4,1.8-4,4s1.8,4,4,4c2.2,0,4-1.8,4-4S243.8,154.2,241.6,154.2z M243.6,156.9l-2.5,3.2
+          			c0,0-0.1,0.1-0.1,0.1c0,0-0.1,0-0.1-0.1c0,0-1.4-1.4-1.4-1.4l0,0c0,0,0,0,0-0.1s0,0,0-0.1c0,0,0,0,0,0c0.1-0.1,0.4-0.4,0.4-0.5
+          			c0,0,0-0.1,0.1-0.1c0,0,0.1,0,0.1,0.1s0.8,0.8,0.8,0.8l2-2.6c0,0,0,0,0.1,0c0,0,0,0,0.1,0l0.6,0.4
+          			C243.6,156.8,243.7,156.8,243.6,156.9C243.7,156.9,243.6,156.9,243.6,156.9z"/>
+          	</g>
+          	<polygon class="dia2i" points="329.5,85.5 318.1,80.6 321.5,78.7 314.6,66.9 320.7,63.4 327.5,75.2 330.9,73.2 	"/>
+          </g>
+          </svg>  
+				</div>
+			</section> -->
+
+			<section data-transition="zoom-in slide-out">
+				<p>24 hours</p>
+			</section>
+
+			<!-- <section>
+				<h4>Application Update Signing (Android, iOS)</h4>
+				<p>
+					<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" height="200px" viewBox="0 0 343.8 403.3" style="enable-background:new 0 0 343.8 403.3; margin-right: 100px;"
+									xml:space="preserve">
+						<style type="text/css">
+							.img1a {
+								fill: #9FBF3B;
+							}
+
+							.img1b {
+								fill: #FFFFFF;
+							}
+						</style>
+						<defs>
+						</defs>
+						<g id="androd_1_">
+							<path class="img1a" d="M223.6,34.9l20.2-29.3c1.2-1.7,0.9-4-0.7-5.1c-1.6-1.1-3.8-0.5-5,1.2l-21,30.4c-13.8-5.4-29.1-8.5-45.3-8.5
+				          		s-31.5,3-45.3,8.5L105.6,1.8c-1.2-1.7-3.4-2.3-5-1.2c-1.6,1.1-1.9,3.4-0.7,5.1l20.2,29.3c-32.1,14.9-54.5,43.3-57.4,76.3H281
+				          		C278.2,78.2,255.7,49.8,223.6,34.9" />
+							<path class="img1b" d="M126.3,81.1c-6.7,0-12.1-5.4-12.1-12.1c0-6.7,5.4-12.1,12.1-12.1c6.7,0,12.1,5.4,12.1,12.1
+				          		C138.4,75.7,132.9,81.1,126.3,81.1" />
+							<path class="img1b" d="M217.5,81.1c-6.7,0-12.1-5.4-12.1-12.1c0-6.7,5.4-12.1,12.1-12.1c6.7,0,12.1,5.4,12.1,12.1
+				          		C229.6,75.7,224.2,81.1,217.5,81.1" />
+							<path class="img1a" d="M48.7,249.2c0,13.4-10.9,24.4-24.4,24.4l0,0C10.9,273.6,0,262.7,0,249.2v-98.5c0-13.4,10.9-24.4,24.4-24.4l0,0
+				          		c13.5,0,24.4,10.9,24.4,24.4C48.7,150.7,48.7,249.2,48.7,249.2z" />
+							<path class="img1a" d="M62.7,127.1V305c0,10.6,8.6,19.1,19.1,19.1h22.6v54.7c0,13.5,10.9,24.4,24.4,24.4s24.4-10.9,24.4-24.4v-54.7
+				          		h37.4v54.7c0,13.5,10.9,24.4,24.4,24.4s24.4-10.9,24.4-24.4v-54.7h22.6c10.6,0,19.1-8.6,19.1-19.1V127.1H62.7z" />
+							<path class="img1a" d="M295.1,249.2c0,13.4,10.9,24.4,24.4,24.4l0,0c13.5,0,24.4-10.9,24.4-24.4v-98.5c0-13.4-10.9-24.4-24.4-24.4
+				          		l0,0c-13.5,0-24.4,10.9-24.4,24.4V249.2z" />
+						</g>
+						</svg>
+						<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" x="0px" y="0px" height="200px" viewBox="0 0 136.5 162" style="enable-background:new 0 0 136.5 162;"
+										xml:space="preserve">
+							<style type="text/css">
+								.img2a {
+									fill: #FFFFFF;
+								}
+							</style>
+							<defs>
+							</defs>
+							<path class="img2a" d="M133.6,126.3c-2.4,5.7-5.4,10.9-8.7,15.7c-4.6,6.5-8.3,11.1-11.2,13.6c-4.5,4.1-9.3,6.2-14.4,6.4
+				          	c-3.7,0-8.1-1.1-13.3-3.2c-5.2-2.1-10-3.2-14.3-3.2c-4.6,0-9.5,1.1-14.7,3.2c-5.3,2.1-9.5,3.2-12.7,3.4c-4.9,0.2-9.8-2-14.7-6.5
+				          	c-3.1-2.7-7-7.4-11.7-14c-5-7.1-9.2-15.3-12.4-24.7C1.7,106.7,0,96.9,0,87.4c0-10.9,2.3-20.2,7-28.1c3.7-6.3,8.6-11.3,14.8-14.9
+				          	s12.8-5.5,19.9-5.6c3.9,0,9,1.2,15.4,3.6c6.4,2.4,10.4,3.6,12.2,3.6c1.3,0,5.9-1.4,13.6-4.2c7.3-2.6,13.4-3.7,18.4-3.3
+				          	c13.6,1.1,23.9,6.5,30.7,16.2c-12.2,7.4-18.2,17.7-18.1,31c0.1,10.3,3.9,18.9,11.2,25.8c3.3,3.2,7.1,5.6,11.2,7.4
+				          	C135.6,121.4,134.6,123.9,133.6,126.3L133.6,126.3z M102.3,3.2c0,8.1-3,15.7-8.9,22.7C86.4,34.2,77.7,39,68.4,38.3
+				          	c-0.1-1-0.2-2-0.2-3.1c0-7.8,3.4-16.1,9.4-22.9c3-3.4,6.8-6.3,11.4-8.6c4.6-2.3,9-3.5,13.1-3.7C102.3,1.1,102.3,2.2,102.3,3.2
+				          	L102.3,3.2z" />
+							</svg>
+							 </p>
+				<div class="fragment">
+					<p>What happens when a signer leaves the company?</p>
+				</div>
+				<aside class="notes">
+				</aside>
+			</section> -->
+
+			<section>
+				<h2>Hackathon Project</h2>
+				<br>
+				<ul>
+					<li class="fragment">Stateless bitcoin script evaluation engine. (Typescript)</li>
+					<br>
+					<li class="fragment">Bitcoin Script editor. (Angular &amp; Ionic)</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>Stateless Script Evaluation</h2>
+        <pre><code class="hljs">
+import { execute, OpCode } from 'bitcoin-script'
+
+const a = execute(
+  { blockHeight: 0, blockTime: 0, nLockTime: 0,
+  nSequence: 0, stack: [], altStack: [], programCounter: 0,
+  serializedScript: new Uint8Array([
+  OpCode.OP_2,
+  OpCode.OP_3,
+  OpCode.OP_ADD
+  ])})
+
+a.next(); a.next(); a.next();
+        </code></pre>
+			</section>
+
+      <section>
+        <h2>Bitcoin Script editor</h2>
+      </section>
+
+      <section>
+        <img src="https://cloud.githubusercontent.com/assets/904007/23341026/7a561e0a-fc0e-11e6-88ed-531e74c0b109.png" style="max-height: 60vh">
+      </section>
+
+      <section>
+        <img src="https://cloud.githubusercontent.com/assets/904007/23341027/7b973dee-fc0e-11e6-839e-4c433fb33acd.png" style="max-height: 60vh">
+      </section>
+
+			<section>
+				<h2>Get Involved</h2><br>
+				<h4><code><a href="https://github.com/bitauth/bitauth2017">github.com/bitscript/bitscript</a></code></h4>
+				<aside class="notes">
+				</aside>
+			</section>
+
+			<section>
+				<h1>Thank You</h1>
+				<p>(to the moon)</p>
+			</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			history: true,
+
+			// More info https://github.com/hakimel/reveal.js#dependencies
+			dependencies: [{
+					src: 'plugin/markdown/marked.js'
+				},
+				{
+					src: 'plugin/markdown/markdown.js'
+				},
+				{
+					src: 'plugin/notes/notes.js',
+					async: true
+				},
+				{
+					src: 'plugin/highlight/highlight.js',
+					async: true,
+					callback: function() {
+						hljs.initHighlightingOnLoad();
+					}
+				}
+			]
+		});
+	</script>
+
+	<script>
+		(function(i, s, o, g, r, a, m) {
+			i['GoogleAnalyticsObject'] = r;
+			i[r] = i[r] || function() {
+				(i[r].q = i[r].q || []).push(arguments)
+			}, i[r].l = 1 * new Date();
+			a = s.createElement(o),
+				m = s.getElementsByTagName(o)[0];
+			a.async = 1;
+			a.src = g;
+			m.parentNode.insertBefore(a, m)
+		})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+		ga('create', 'UA-90982484-3', 'auto');
+		ga('send', 'pageview');
+	</script>
+
+	<div class="share-reveal" style="
+    position: absolute;
+    bottom: 5vh;
+    left: 5vw;
+    z-index: 20;">
+		<p><a href="https://github.com/bitscript/bitscript">GitHub Project &rarr;</a></p>
+		<p><a href="https://twitter.com/bitjson">@bitjson &rarr;</a></p>
+		<p><a href="https://twitter.com/nacardin">@nacardin &rarr;</a></p>
+		</div>
+
+		<style>
+			/* Social sharing */
+
+			.share-reveal a {
+				color: #00aced;
+				font-family: "Source Sans Pro", Helvetica, sans-serif;
+				text-decoration: none;
+				font-size: 1rem;
+			}
+		</style>
+</body>
+
+</html>
